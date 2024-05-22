@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+    .register {
+        margin-left: 100px;
+        font-family: "Noto Sans";
+    }
+
+</style>
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Base</title>
+</head>
+<body>
+<div class="register">
+    <header>
+        {% if request.user.is_authenticated %}
+            <a href="{% url 'ListProducts' %}">Dashboard</a>
+            <a href="{% url 'ListCategories' %}">Categories</a>
+            <a href="{% url 'MyProfile' request.user.pk %}">My profile</a>
+        {% else %}
+            <a href="{% url 'Login' %}">Login</a>
+            <a href="{% url 'Register' %}">Register</a>
+        {% endif %}
+
+        {% if request.user.seller == True %}
+            <a href="{% url 'AddProducts' %}">Sell product</a>
+        {% endif %}
+
+    </header>
+    <br>
+    <hr>
+
+    {% block content %}
+    {% endblock content %}
+</div>

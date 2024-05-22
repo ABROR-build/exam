@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .board {
+        display: inline-block;
+        margin-right: 10px;
+        border: 1px;
+        border-style: solid;
+        padding: 5px;
+        border-radius: 10px;
+        border-color: rgb(41, 41, 43);
+    }
+
+</style>
+
+<h1>Dashboard| Hello {{ request.user.username }}</h1>
+    {% for product in products %}
+    <div class="board"><img src="{{ product.image.url }}" height="200"><br><br>
+        <h4>{{ product.name }}</h4>
+        <h5>{{ product.price }}$</h5>
+        <a href="{% url 'ProductDetails' product.pk %}">More</a>
+    </div>    
+    {% endfor %}
+{% endblock content %}

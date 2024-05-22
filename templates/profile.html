@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <style>
+        .padd {
+            margin-bottom: 1px
+
+        }
+
+        h2 {
+            margin-top: 3px
+        }
+
+        .bio {
+            margin-top: 3px
+        }
+    </style>
+    {% if profile.profile_picture %}
+        <img src="{{ profile.profile_picture.url }}" height="200">
+    {% endif %}
+    <p class="padd">Username:</p><h2>{{ profile.username }}</h2>
+    <p class="padd">Age:</p><h2>{{ profile.age }}</h2>
+    <p class="padd">About {{ profile.username }}:</p><hr><p class="bio">{{ my_profile.bio }}</p><br><br>
+
+{% endblock content %}
